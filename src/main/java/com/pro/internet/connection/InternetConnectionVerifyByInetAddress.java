@@ -1,4 +1,4 @@
-package com.pro.internet;
+package com.pro.internet.connection;
 
 import java.net.InetAddress;
 
@@ -39,6 +39,16 @@ public class InternetConnectionVerifyByInetAddress {
 			}
 		} catch (Exception e) {
 			System.out.println("Erro ao verificar a conexão com a Internet: " + e.getMessage());
+			return false;
+		}
+	}
+
+	public static boolean checkInetAddressReachable(String host, int timeoutMs) {
+		try {
+			InetAddress addr = InetAddress.getByName(host);
+			// isReachable tenta ICMP ou fallback; comportamento depende do SO
+			return addr.isReachable(timeoutMs);
+		} catch (Exception e) {
 			return false;
 		}
 	}

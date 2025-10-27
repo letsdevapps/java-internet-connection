@@ -1,4 +1,4 @@
-package com.pro.internet;
+package com.pro.internet.connection;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -61,6 +61,24 @@ public class InternetConnectionVerifyByUrlConn {
 			}
 		} catch (Exception e) {
 			System.out.println("Erro ao verificar a conexão com a Internet: " + e.getMessage());
+			return false;
+		}
+	}
+
+//	Exemplo de URL para testar: http://www.google.com, https://www.cloudflare.com/cdn-cgi/trace 
+//	(alguns serviços retornam rapidamente).
+	public static boolean checkHttp(String urlString, int timeoutMs) {
+		try {
+			URL url = new URL(urlString);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("HEAD");
+			conn.setConnectTimeout(timeoutMs);
+			conn.setReadTimeout(timeoutMs);
+			conn.connect();
+			int code = conn.getResponseCode();
+			conn.disconnect();
+			return (code >= 200 && code < 400);
+		} catch (Exception e) {
 			return false;
 		}
 	}

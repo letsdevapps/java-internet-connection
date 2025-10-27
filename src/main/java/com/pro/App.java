@@ -1,6 +1,7 @@
 package com.pro;
 
-import com.pro.internet.InternetConnectionVerify;
+import com.pro.internet.connection.InternetConnectionVerify;
+import com.pro.internet.ip.IPVerify;
 
 public class App {
 	public static void main(String[] args) {
@@ -11,5 +12,9 @@ public class App {
 		System.out.println("Teste de conexão de internet por InetAddress: " + internetConnectionVerify.isInternetAvailableByInetAddress());
 		
 		System.out.println("Teste de conexão de internet por URL Connection: " + internetConnectionVerify.isInternetAvailableByUrlConn());
+	
+		IPVerify.getExternalIP();
+		
+		IPVerify.getInternalIP();
 	}
 }

@@ -1,4 +1,4 @@
-package com.pro.internet;
+package com.pro.internet.connection;
 
 public class InternetConnectionVerify {
 
