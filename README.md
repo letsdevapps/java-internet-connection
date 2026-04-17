@@ -3,6 +3,12 @@
 
 Projeto demonstrativo a fim de demonstrar Verificação de Conexão com Internet para aplicativos Java Desktop de diferentes modos.
 
+# Docker
+
+	docker build -t java-internet-connection .
+	
+	docker run --rm --name java-internet-connection java-internet-connection
+
 # Visão geral
 
 Este POC mostra três abordagens comuns para checar se há acesso à Internet a partir de uma aplicação Java:
